@@ -1,0 +1,13 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-all-incoming-to-webapp
+  namespace: default
+spec:
+  policyTypes:
+  - Ingress
+  podSelector:
+    matchLabels:
+      app: backend
+  ingress:
+  - {}

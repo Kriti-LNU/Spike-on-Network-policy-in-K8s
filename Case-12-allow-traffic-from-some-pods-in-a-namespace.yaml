@@ -1,0 +1,17 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-traffic-from-selected-pods-in-a-namespace
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: web
+  ingress:
+    - from:
+      - namespaceSelector:     # chooses all pods in namespaces labelled with purpose:development
+          matchLabels:
+            purpose: development 
+        podSelector:           # chooses pods with app:api
+          matchLabels:
+            app: api
