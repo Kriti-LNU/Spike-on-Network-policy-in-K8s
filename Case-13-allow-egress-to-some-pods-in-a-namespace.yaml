@@ -1,0 +1,24 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-egress-from-some-pods-in-a-namespace
+  namespace: production
+spec:
+  policyTypes:
+  - Egress
+  podSelector:
+    matchLabels:
+      app: frontend 
+  egress:
+  - to:
+      - namespaceSelector:
+          matchLabels:
+           purpose: development
+        podSelector:
+          matchLabels:
+            app: backend
+  - ports:
+    - port: 53
+      protocol: TCP
+    - port: 53
+      protocol: UDP
