@@ -16,13 +16,13 @@ az network vnet create \
 # Get the subnet resource ID for the existing subnet into which the AKS cluster will be joined:
 az network vnet subnet list \
      --resource-group $RESOURCE_GROUP_NAME \
-    --vnet-name myVnet1 \
+    --vnet-name myVnet \
     --query "[0].id" --output tsv
 
 
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
-    --name myAKSCluster1 \
+    --name myAKSCluster \
     --network-plugin azure \
     --vnet-subnet-id <subnet-id>\
     --dns-service-ip 10.2.0.10 \
