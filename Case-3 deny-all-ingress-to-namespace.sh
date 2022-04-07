@@ -1,5 +1,5 @@
 
-# CASE 7 DENY ALL INGRESS TO A NAMESPACE 
+# CASE 3 DENY ALL INGRESS TO A NAMESPACE 
 
 # Create an nginx pod in default namespace 
 kubectl run webapp --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --expose --port 80
@@ -14,10 +14,10 @@ wget -O- --timeout=2 --tries=1 http://webapp
 exit
 
 # Define the yaml file for network policy 
-# Case-7-deny-all-ingress-to-namespace.yaml is defined 
+# Case-3-deny-all-ingress-to-namespace.yaml is defined 
 
 # Apply the yaml file 
-kubectl apply -f "C:\github\Network policies in K8s\Case-7-deny-all-ingress-to-namespace.yaml"
+kubectl apply -f "C:\github\Network policies in K8s\Case-3-deny-all-ingress-to-namespace.yaml"
 
 # Again try accessing the webapp pod using testpod 
 # Create another pod and attach a terminal session to test that the reachability of the default NGINX webpage:
