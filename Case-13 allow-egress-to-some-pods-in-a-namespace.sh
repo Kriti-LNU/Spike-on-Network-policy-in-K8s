@@ -26,4 +26,4 @@ exit
 # CleanUp
 kubectl delete pod,svc webapp --namespace development
 kubectl delete pod,svc myapp --namespace development
-kubectl delete networkpolicy allow-egress-from-some-pods-in-a-namespace
+kubectl delete networkpolicy allow-egress-to-some-pods-in-a-namespace
