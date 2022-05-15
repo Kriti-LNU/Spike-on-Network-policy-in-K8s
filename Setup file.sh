@@ -34,23 +34,6 @@ az aks create \
     --service-cidr ${SERVICE_CIDR} \
     --node-count 1
 
-#############################################################################################
-# Get the subnet resource ID for the existing subnet into which the AKS cluster will be joined:
-az network vnet subnet list \
-     --resource-group $RESOURCE_GROUP_NAME \
-    --vnet-name Vnet \
-    --query "[0].id" --output tsv
 
-
-# Create cluster 
-az aks create \
-    --resource-group $RESOURCE_GROUP_NAME \
-    --name myAKSCluster \
-    --network-plugin azure \
-    --network-policy azure \
-    --vnet-subnet-id <subnet-id>\
-    --dns-service-ip 10.2.0.10 \
-    --service-cidr 10.2.0.0/24 \
-    --generate-ssh-keys
 
     

@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default.allow-hello
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: hello
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          run: curl
+    ports:
+    - protocol: TCP
+      port: 5001
+      endPort: 8001

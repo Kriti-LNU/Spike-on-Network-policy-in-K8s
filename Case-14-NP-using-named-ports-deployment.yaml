@@ -1,0 +1,39 @@
+# Create an application that returns nginx response on port 80 and hello response on port 8080
+# name port 80 to http-web-svc and 8080 to hello-node
+# Expose the pod as Service, map 80 to 8001, map 8080 to 5001.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pod
+  labels:
+    app: hello
+spec:
+  containers:
+  - name: nginx
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+    ports:
+      - containerPort: 80
+        name: http-web-svc
+  - name: mini-hello-node
+    image: k8s.gcr.io/echoserver:1.4
+    ports:
+      - containerPort: 8080
+        name: hello-node
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-service 
+spec:
+  selector:
+    app: hello
+  ports:
+  - name: nginx-service
+    protocol: TCP
+    port: 8001
+    targetPort: http-web-svc
+  - name: hello-node-svc
+    protocol: TCP
+    port: 5001
+    targetPort: hello-node
