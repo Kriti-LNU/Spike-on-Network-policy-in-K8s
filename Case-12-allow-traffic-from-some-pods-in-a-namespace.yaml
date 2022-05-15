@@ -11,7 +11,7 @@ spec:
   - Ingress
   ingress:
     - from:
-      - namespaceSelector:     # chooses all pods in namespaces labelled with purpose:development
+      - namespaceSelector:     # chooses namespace labelled with purpose:development
           matchLabels:
             purpose: development 
         podSelector:           # chooses pods with app:api
