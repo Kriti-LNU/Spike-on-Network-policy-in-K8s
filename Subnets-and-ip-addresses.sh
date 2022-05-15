@@ -1,5 +1,4 @@
 
-# CASE 6 ALLOW ALL EGRESS FROM AN APPLICATION
 
 # Create an nginx pod webapp open on port 80 
 kubectl run webapp --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine  --expose --port 80  
