@@ -15,9 +15,9 @@ kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.
 # Use wget to confirm if you can access the default NGINX webpage:
 wget -qO- http://webapp
 # The pod will not be reachable 
-# try accessing external hostnames using testpod
-wget -O- --timeout=2 http://www.google.com
-# the site is reachable
+# try accessing the allowed ip
+wget -O- --timeout=2 http://8.8.8.8
+# rechable 
 
 
 # CleanUp
