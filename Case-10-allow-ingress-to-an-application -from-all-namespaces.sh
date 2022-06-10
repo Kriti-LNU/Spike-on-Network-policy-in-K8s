@@ -9,8 +9,7 @@ kubectl run webapp --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --lab
 
 # Apply the yaml file to allow traffic from all namespaces 
 kubectl apply -f "C:\github\Network policies in K8s\Case-10-allow-traffic-to-an-application-from-all-namespaces.yaml"
-# Apply the yaml file to deny traffic from all namespaces 
-kubectl apply -f "C:\github\Network policies in K8s\Case-7-deny-all-ingress-to-namespace.yaml"
+
 
 # Try accessing the webapp pod using testpod in default namespace 
 # Create another pod try to reach the default NGINX webpage:
